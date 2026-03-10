@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2020 The Khronos Group Inc.
+ * Copyright (c) 2008-2026 The Khronos Group Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -517,6 +517,16 @@ typedef double          cl_double;
 #else
 #define  __CL_HAS_ANON_STRUCT__ 0
 #define  __CL_ANON_STRUCT__
+#endif
+
+/* Define capabilities for anonymous union members. */
+#if defined(__cplusplus) && __cplusplus >= 201103L
+#define  __CL_HAS_ANON_UNION__ 1
+#define  __CL_ANON_UNION__
+#else
+    /* Follow anonymous struct logic */
+#define  __CL_HAS_ANON_UNION__ __CL_HAS_ANON_STRUCT__
+#define  __CL_ANON_UNION__ __CL_ANON_STRUCT__
 #endif
 
 #if defined(_WIN32) && defined(_MSC_VER) && __CL_HAS_ANON_STRUCT__
